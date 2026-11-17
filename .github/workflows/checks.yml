@@ -1,0 +1,21 @@
+name: Checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Workshop regressions and CSP
+        run: node --test scripts/test_workshop.cjs
+      - name: Python tests
+        run: |
+          python3 -m venv .venv
+          .venv/bin/python -m pip install --disable-pip-version-check -e '.[dev]'
+          .venv/bin/python -m pytest -q

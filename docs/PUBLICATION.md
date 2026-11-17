@@ -25,6 +25,6 @@ Ouvrir `index.html`, vérifier les filtres et les liens, parcourir l’atelier e
 
 Le site public ne contacte aucun service local et ne collecte aucune donnée hôte. Le suivi de l’atelier reste dans `localStorage` sur l’origine du navigateur, sans synchronisation GitHub ou Vercel. Exporter manuellement le JSON pour le conserver ; éviter les traces sensibles dans tout contenu public.
 
-La politique CSP bloque les connexions de l’application (`connect-src 'none'`). Les styles et scripts intégrés restent autorisés pour préserver l’atelier autonome. Il n’y a ni analytique applicative ni police externe ; l’hébergeur traite nécessairement les requêtes de consultation.
+La politique CSP bloque les connexions de l’application (`connect-src 'none'`). Le script intégré de l’atelier est autorisé par son empreinte SHA-256 ; les gestionnaires d’événements injectés restent bloqués. Les styles intégrés restent autorisés pour préserver la consultation hors ligne. Après modification du script, exécuter `python3 scripts/update_csp.py` depuis la racine, puis `node --test scripts/test_workshop.cjs`. Il n’y a ni analytique applicative ni police externe ; l’hébergeur traite nécessairement les requêtes de consultation.
 
 Le logiciel reste en v0.1. La publication de ce dossier ne choisit pas la piste v0.2, n’exécute pas les essais et ne certifie pas l’air-gap. Les affirmations documentaires sont datées et doivent être relues après évolution du code.

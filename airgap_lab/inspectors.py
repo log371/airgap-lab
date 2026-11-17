@@ -1,8 +1,6 @@
 """Read-only and bounded local inspection routines."""
 import json
-import os
 import platform
-import socket
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -10,6 +8,15 @@ from datetime import datetime, timezone
 import psutil
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/tags"
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        raise urllib.error.HTTPError(req.full_url, code, "Redirect blocked", headers, fp)
+
+
+# Ignore environment proxy settings and refuse redirects beyond the fixed endpoint.
+_OLLAMA_OPENER = urllib.request.build_opener(urllib.request.ProxyHandler({}), _NoRedirect())
 
 
 def inspect_hardware():
@@ -32,7 +39,7 @@ def inspect_ollama(url=OLLAMA_URL):
         raise ValueError("Only the fixed loopback Ollama endpoint is allowed")
     request = urllib.request.Request(url, headers={"Accept": "application/json"})
     try:
-        with urllib.request.urlopen(request, timeout=1.5) as response:
+        with _OLLAMA_OPENER.open(request, timeout=1.5) as response:
             if response.status != 200:
                 return {"reachable": False, "models": [], "error": "Unexpected HTTP status"}
             raw = response.read(512 * 1024 + 1)
@@ -53,3 +60,4 @@ def snapshot():
     return {"collected_at": datetime.now(timezone.utc).isoformat(),
             "scope": "local_machine", "hardware": inspect_hardware(), "ollama": inspect_ollama(),
             "limitations": ["No GPU detection", "No benchmark", "No network exposure assessment", "Not an airgap certification"]}
+

@@ -22,7 +22,7 @@ python -m pip install -e '.[dev]'
 python -m uvicorn airgap_lab.app:app --host 127.0.0.1 --port 8765
 ```
 
-Open `http://127.0.0.1:8765`. To test: `pytest`.
+Open `http://127.0.0.1:8765`. To test: `pytest`. Workshop regressions: `node --test scripts/test_workshop.cjs`. Continuous checks: [GitHub Actions](https://github.com/log371/airgap-lab/actions/workflows/checks.yml).
 
 **Security boundary:** The server binds to localhost in the documented command. Do **not** bind to `0.0.0.0` or expose it through a public proxy: this read-only API reveals local system metadata and has no authentication. Ollama detection targets a fixed loopback address and does not accept arbitrary URLs.
 
@@ -77,3 +77,8 @@ Les plans sont proposés, les résultats restent à renseigner. Les validations 
 ## License
 
 MIT — see `LICENSE`.
+
+
+## Security and maintenance
+
+See [SECURITY.md](SECURITY.md) for the local API, backup import and publication boundaries. Ollama requests ignore environment proxies and refuse redirects; the local API rejects non-loopback Host values and marks responses no-store. Workshop backups are validated on import and restore. After editing the workshop script, refresh its CSP hash with `python3 scripts/update_csp.py`.
