@@ -50,6 +50,26 @@ This is **not** an airgap certification or a full security scanner. No network e
 4. Opt-in network listen-port inventory with platform-specific limitations
 5. Static public demonstration with explicitly marked synthetic fixtures
 
+## Atelier interactif — préparation v0.2
+
+Un [atelier autonome en français](docs/atelier-v02.html) permet de comparer les trois pistes de la feuille de route, choisir un périmètre et suivre les tâches, hypothèses, décisions, essais et critères d’acceptation. Une vue prépare aussi la présentation portfolio à partir des traces saisies.
+
+**État : outil de planification. La v0.2 reste à arbitrer ; cet atelier n’implémente pas les fonctionnalités proposées et n’exécute aucun test du projet.**
+
+### Utilisation hors ligne
+
+Télécharge le dépôt puis ouvre `docs/atelier-v02.html` dans un navigateur récent. Aucune installation, ressource CDN ou connexion au serveur FastAPI n’est nécessaire. Si le navigateur limite le stockage avec `file://`, utilise un serveur local dédié :
+
+```bash
+python3 -m http.server 8766 --bind 127.0.0.1 --directory docs
+```
+
+Ouvre ensuite `http://127.0.0.1:8766/atelier-v02.html`.
+
+Le suivi est enregistré dans le navigateur (`localStorage`), sans synchronisation avec GitHub ni entre appareils. Utilise **Exporter JSON** pour sauvegarder ton travail et **Importer** pour le reprendre. Un changement de navigateur, d’adresse ou une suppression des données locales peut faire disparaître le suivi visible. N’ajoute pas de métadonnées hôte sensibles dans des exports destinés à être publics.
+
+Les plans sont proposés, les résultats restent à renseigner. Les validations demandent une trace ; elles restent déclaratives. L’état v0.1 présenté correspond à l’instantané consulté le 16 novembre 2026, sans actualisation automatique.
+
 ## License
 
 MIT — see `LICENSE`.
