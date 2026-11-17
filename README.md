@@ -50,7 +50,11 @@ This is **not** an airgap certification or a full security scanner. No network e
 4. Opt-in network listen-port inventory with platform-specific limitations
 5. Static public demonstration with explicitly marked synthetic fixtures
 
-## Atelier interactif — préparation v0.2
+## Dossier public et atelier — préparation v0.2
+
+[**Dossier technique public**](https://airgap-lab.vercel.app) · [**Dossier portfolio**](https://julienl.dev/projects/airgap-lab)
+
+Le dossier présente le besoin, l’architecture, les preuves disponibles, les limites et les trois pistes v0.2. La publication statique est reliée à GitHub via Vercel ; le serveur Python reste exclusivement local. Voir [la configuration et les règles de publication](docs/PUBLICATION.md).
 
 Un [atelier autonome en français](docs/atelier-v02.html) permet de comparer les trois pistes de la feuille de route, choisir un périmètre et suivre les tâches, hypothèses, décisions, essais et critères d’acceptation. Une vue prépare aussi la présentation portfolio à partir des traces saisies.
 
