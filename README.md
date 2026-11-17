@@ -82,3 +82,5 @@ MIT — see `LICENSE`.
 ## Security and maintenance
 
 See [SECURITY.md](SECURITY.md) for the local API, backup import and publication boundaries. Ollama requests ignore environment proxies and refuse redirects; the local API rejects non-loopback Host values and marks responses no-store. Workshop backups are validated on import and restore. After editing the workshop script, refresh its CSP hash with `python3 scripts/update_csp.py`.
+
+Audit and remediation record: [17 November 2026](docs/AUDIT-2026-11-17.md).
