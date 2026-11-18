@@ -54,6 +54,10 @@ This is **not** an airgap certification or a full security scanner. No network e
 4. Opt-in network listen-port inventory with platform-specific limitations
 5. Static public demonstration with explicitly marked synthetic fixtures
 
+## Expérience liée : Le Phare
+
+[Le Phare — Bulletins hors ligne](experiments/phare-bulletins) simule un poste qui vérifie un bulletin signé avant de l’accepter. Le projet explore une chaîne de réception séparée de l’inspecteur d’hôte.
+
 ## Dossier public et atelier — préparation v0.2
 
 [**Dossier technique public**](https://airgap-lab.vercel.app) · [**Dossier portfolio**](https://julienl.dev/projects/airgap-lab)

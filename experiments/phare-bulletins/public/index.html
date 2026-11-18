@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12191c">
+  <meta name="description" content="Le Phare vérifie des bulletins signés sur un poste hors ligne simulé. Un prototype open source de Julien L.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.mjs"></script>
+  <title>Le Phare · Bulletins hors ligne</title>
+</head>
+<body>
+  <a class="skip" href="#scenarios">Aller à la démonstration</a>
+  <header class="mast wrap">
+    <a class="brand" href="./">LE PHARE</a>
+    <nav aria-label="Liens du projet">
+      <a href="https://github.com/log371/airgap-lab/tree/main/experiments/phare-bulletins">Code source ↗</a>
+      <a href="https://julienl.dev/lab">Le labo ↗</a>
+    </nav>
+  </header>
+  <main class="wrap">
+    <section class="intro" aria-labelledby="title">
+      <div>
+        <p class="eyebrow">PROTOTYPE OPEN SOURCE · DONNÉES FICTIVES</p>
+        <h1 id="title">Bulletins<br>hors ligne<span>.</span></h1>
+        <p class="lede">Un poste coupé d’Internet reçoit un bulletin. Comment sait-il qui l’a signé, si le texte a été modifié et s’il l’a déjà reçu ?</p>
+      </div>
+      <aside class="station" aria-label="Paramètres de la simulation">
+        <p class="eyebrow">POSTE RÉCEPTEUR SIMULÉ</p>
+        <dl>
+          <div><dt>Horloge fixe</dt><dd>18 NOV 2026 · 10:00 UTC</dd></div>
+          <div><dt>Émetteur de confiance</dt><dd>atelier-des-calanques</dd></div>
+          <div><dt>Dernière séquence acceptée</dt><dd id="sequence">—</dd></div>
+        </dl>
+      </aside>
+    </section>
+    <section id="scenarios" class="workbench" aria-labelledby="scenario-title">
+      <div class="controls">
+        <p class="eyebrow">RÉCEPTION SIMULÉE</p>
+        <h2 id="scenario-title">Essayer un bulletin</h2>
+        <div class="examples">
+          <button type="button" data-example="valid">Bulletin signé</button>
+          <button type="button" data-example="changed">Texte modifié</button>
+          <button type="button" data-example="expired">Bulletin expiré</button>
+          <button type="button" data-example="unknown">Émetteur inconnu</button>
+        </div>
+        <p class="note">Joue deux fois le bulletin signé pour observer le refus du second envoi.</p>
+        <label for="bulletin-file">Importer une enveloppe JSON <small>16 Kio max.</small></label>
+        <input id="bulletin-file" type="file" accept=".json,application/json">
+        <div class="small-actions">
+          <button class="text-button" id="download-example" type="button">Télécharger l’exemple</button>
+          <button class="text-button" id="reset" type="button" disabled>Réinitialiser</button>
+        </div>
+        <noscript>JavaScript est nécessaire pour vérifier les bulletins dans le navigateur.</noscript>
+      </div>
+      <div class="readout">
+        <p class="eyebrow">DÉCISION DU POSTE</p>
+        <div class="result" id="result" data-state="ready" role="status" aria-atomic="true">
+          <h2 id="result-title">En attente d’un bulletin</h2>
+          <p id="result-detail">Choisis un scénario pour suivre la décision du poste récepteur.</p>
+        </div>
+        <article id="message" hidden>
+          <p id="bulletin-meta" class="mono note"></p>
+          <h3 id="bulletin-title"></h3>
+          <p id="bulletin-body"></p>
+        </article>
+        <button id="export" class="text-button" type="button" disabled>Exporter le contenu accepté</button>
+      </div>
+    </section>
+    <section class="scope" aria-labelledby="scope-title">
+      <h2 id="scope-title">Ce que l’expérience vérifie</h2>
+      <div>
+        <p>Le navigateur vérifie une signature ECDSA avec une clé publique fournie au poste, une fenêtre de validité et une séquence croissante par émetteur. Le registre des séquences dure le temps de la session.</p>
+        <p>La radio est une piste de transport et l’IA une piste de lecture. Ce prototype travaille sur des fichiers. Une signature authentifie une provenance et l’intégrité du texte, tandis que sa véracité et sa sûreté pour un modèle nécessitent leurs propres contrôles.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap"><a href="https://julienl.dev">Julien L.</a> · Le Phare · MIT</footer>
+</body>
+</html>
