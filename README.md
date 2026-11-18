@@ -1,8 +1,12 @@
 # >_ AIRGAP LAB
 
-**Local-first machine and AI inspection workbench.**
+**Host inventory for planning an on-premises AI pilot.**
 
-A small, read-only Python/FastAPI dashboard that inventories hardware and checks for a locally running Ollama instance. Designed to demonstrate practical systems development rather than a fake security score.
+Airgap Lab inventories the CPU, memory and OS of a candidate host, lists models reported by its local Ollama service and exports a JSON snapshot. The Python/FastAPI inspector runs on the host in read-only mode.
+
+[Technical dossier (FR)](https://airgap-lab.vercel.app) · [Test runs](https://github.com/log371/airgap-lab/actions/workflows/checks.yml)
+
+An infrastructure team can use the report as a starting point for pilot planning. Capacity under load, access controls, network isolation and operating procedures require separate validation on the target infrastructure.
 
 ## Features (v0.1)
 
