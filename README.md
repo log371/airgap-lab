@@ -56,7 +56,7 @@ This is **not** an airgap certification or a full security scanner. No network e
 
 ## Expérience liée : Le Phare
 
-[Le Phare — Bulletins hors ligne](experiments/phare-bulletins) simule un poste qui vérifie un bulletin signé avant de l’accepter. Le projet explore une chaîne de réception séparée de l’inspecteur d’hôte.
+[Le Phare — Bulletins hors ligne](experiments/phare-bulletins) simule un poste qui vérifie un bulletin signé avant de l’accepter. Le projet explore une chaîne de réception séparée de l’inspecteur d’hôte. Voir aussi le [protocole de banc LoRa Mesh](experiments/phare-bulletins#lora-mesh).
 
 ## Dossier public et atelier — préparation v0.2
 
